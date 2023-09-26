@@ -1,118 +1,106 @@
-import Image from 'next/image'
+
 import { Inter } from 'next/font/google'
+
+import kA from '../assets/regeA.png';
+import kN from '../assets/regeN.png';
+import qA from '../assets/quenA.png';
+import qN from '../assets/quenN.png';
+import nA from '../assets/calA.png';
+import nN from '../assets/calN.png';
+import bA from '../assets/nebuA.png';
+import bN from '../assets/nebuN.png';
+import rA from '../assets/turaA.png';
+import rN from '../assets/turaN.png';
+import pA from '../assets/pionA.png';
+import pN from '../assets/pionN.png';
+import { useEffect, useState } from 'react';
+
+
 
 const inter = Inter({ subsets: ['latin'] })
 
+
+const matrix = [
+  [-3,-5,-4,-2,-3,-1,-4,-5,-3],
+  [0,0,0,0,0,0,0,0,0],
+  [-6,-6,-6,-6,-6,-6,-6,-6,-6],
+  [0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0],
+  [6,6,6,6,6,6,6,6,6],
+  [0,0,0,0,0,0,0,0,0],
+  [3,5,4,2,3,1,4,5,3],
+];
+
+const styling = [
+  "flex absolute gap-[2px] left-[0px] top-[0px]",
+  "flex absolute gap-[2px] left-[16px] top-[30px]",
+  "flex absolute gap-[2px] left-[32px] top-[60px]",
+  "flex absolute gap-[2px] left-[48px] top-[90px]",
+  "flex absolute gap-[2px] left-[64px] top-[120px]",
+  "flex absolute gap-[2px] left-[80px] top-[150px]",
+  "flex absolute gap-[2px] left-[96px] top-[180px]",
+  "flex absolute gap-[2px] left-[112px] top-[210px]",
+  "flex absolute gap-[2px] left-[128px] top-[240px]",
+]
+
+const hex1Style = [
+  'hexagon bg-orange-400 hover:scale-90 transition-all duration-200 flex h-[75%] w-[75%] cursor-pointer',
+  'hexagon bg-orange-700 hover:scale-90 transition-all duration-200 flex h-[75%] w-[75%] cursor-pointer',
+  'hexagon bg-orange-900 hover:scale-90 transition-all duration-200 flex h-[75%] w-[75%] cursor-pointer'
+]
+const hex2Style = [
+  'hexagon bg-orange-900 hover:scale-90 transition-all duration-200 flex h-[75%] w-[75%] cursor-pointer',
+  'hexagon bg-orange-400 hover:scale-90 transition-all duration-200 flex h-[75%] w-[75%] cursor-pointer',
+  'hexagon bg-orange-700 hover:scale-90 transition-all duration-200 flex h-[75%] w-[75%] cursor-pointer'
+]
+const hex3Style = [
+  'hexagon bg-orange-700 hover:scale-90 transition-all duration-200 flex h-[75%] w-[75%] cursor-pointer',
+  'hexagon bg-orange-900 hover:scale-90 transition-all duration-200 flex h-[75%] w-[75%] cursor-pointer',
+  'hexagon bg-orange-400 hover:scale-90 transition-all duration-200 flex h-[75%] w-[75%] cursor-pointer'
+]
+
 export default function Home() {
+
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
+      className={`   relative  ${inter.className}`}
     >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+      {
+        matrix.map( (row,key)=>{
+            console.log(row);
+            return(
+              <div className={styling[key]}>
+                {
+                  row.map((col,index)=>{
+                    return(
+                      <div className={(key%3 === 0) ? hex1Style[(key*9+index)%3] : ((key%3 === 1)? hex2Style[(key*9+index)%3] : hex3Style[(key*9+index)%3])}>
+                       <img  height={30} width={30}
+                       {...matrix[key][index] === 1 && kA}
+                    {...matrix[key][index] === -1 && kN}
+                    {...matrix[key][index] === 2 && qA}
+                    {...matrix[key][index] === -2 && qN}
+                    {...matrix[key][index] === 3 && rA}
+                    {...matrix[key][index] === -3 && rN}
+                    {...matrix[key][index] === 4 && bA}
+                    {...matrix[key][index] === -4 && bN}
+                    {...matrix[key][index] === 5 && nA}
+                    {...matrix[key][index] === -5 && nN}
+                    {...matrix[key][index] === 6 && pA}
+                    {...matrix[key][index] === -6 && pN}
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+                       />
+                      </div>         
+                    )
+                      })
+                }
+              </div>
+            )
+        })
+      }
+    <div className='hexagon  cursor-pointer'></div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+     
     </main>
   )
 }
