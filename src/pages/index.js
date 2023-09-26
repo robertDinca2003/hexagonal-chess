@@ -19,6 +19,27 @@ import { useEffect, useState } from 'react';
 
 const inter = Inter({ subsets: ['latin'] })
 
+ const [game,setGame] = useState({
+  matrix:[
+    [-3,-5,-4,-2,-3,-1,-4,-5,-3],
+    [0,0,0,0,0,0,0,0,0],
+    [-6,-6,-6,-6,-6,-6,-6,-6,-6],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [6,6,6,6,6,6,6,6,6],
+    [0,0,0,0,0,0,0,0,0],
+    [3,5,4,2,3,1,4,5,3],
+  ],
+  firstSel:[-1,-1],
+  secondSel:[-1,-1],
+  whosTurn: true,
+  lastMove:{
+    piece: -1,
+    from: [-1,-1],
+    to: [-1,-1],
+  }
+ });
 
 const matrix = [
   [-3,-5,-4,-2,-3,-1,-4,-5,-3],
@@ -31,6 +52,9 @@ const matrix = [
   [0,0,0,0,0,0,0,0,0],
   [3,5,4,2,3,1,4,5,3],
 ];
+
+
+
 
 const styling = [
   "flex absolute gap-[2px] left-[0px] top-[0px]",
