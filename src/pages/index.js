@@ -1437,7 +1437,7 @@ const hex3Style = [
             && fCol+rDist[i][1] >= 0 && fCol+rDist[i][1] <= 8
             && game.matrix[fRow+rDist[i][0]][fCol+rDist[i][1]] >= 0
             && game.isInCheck[fRow+rDist[i][0]][fCol+rDist[i][1]] === 0
-            && verifPosibleMove(row,col,fRow+rDist[i][0],fCol+rDist[i][1],1)){
+            && verifPosibleMove(row,col,fRow+rDist[i][0],fCol+rDist[i][1],-1)){
             posCpy[fRow+rDist[i][0]][fCol+rDist[i][1]] = 1;
           }
         }
