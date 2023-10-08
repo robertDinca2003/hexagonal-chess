@@ -1,5 +1,19 @@
 "use client"
 
+// Game functionality explained
+// 'game' object is used to store the actual state of the table (.matrix)
+// the possible moves you can make with a piece (.posibleMove)
+// also a table with all squares which the enemy pieces covers (.isInCheck)
+// enpasant features is also covered
+
+// 'gameLogic' function is used to update the game object with a new move
+// 'makePosibleMove' check the possible movesof a piece
+// 'makeIsInCheck' verify if someone is in check
+// 'verifMate' verify if someone is mated
+// 'verifPosibleMove' is used to check if a move don't produce a self check
+// 'resetGame' is used for reseting the game
+// 'secToMin' is used to transform seconds to minutes for the timers
+
 import { Inter } from 'next/font/google'
 
 import kA from '../assets/regeA.png';
