@@ -1,5 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Preview
 
+
+
+https://github.com/robertDinca2003/hexagonal-chess/assets/71851178/7f34842f-85c5-41cd-bb40-ac7ea54dee1e
+
+# Acces Live Demo
+
+https://hexagonal-chess.netlify.app/
+
+# Description 
+Istead of a table of squares, the game of chess now has to be played on a board of hexagons. With new movement pattern of the pieces which try to keep the way of movement in the regular chess. Inspired by De Vesa's chess variant, this is a fully functional playable game.
+
+# Challenges
+- Check detectiomn
+- Mate detection
+- If enpasant is posible
+- Prevent checking myself after my own move
+- Creating a visual representation of the board
+- Creating the timers for players
+
+# Stack used
+- NextJS
+- TailwindCSS
+- Javascript
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 ## Getting Started
 
 First, run the development server:
