@@ -927,54 +927,37 @@ const hex3Style = [
       case -6:
           if(game.matrix[fRow+1][fCol-1] === 0 )
           {
-            if(!verifCheck())
-              posCpy[fRow+1][fCol-1] = 1;
-            else if(verifPosibleMove(row,col,fRow+1,fCol-1,-1))
+            if(verifPosibleMove(row,col,fRow+1,fCol-1,-1))
               posCpy[fRow+1][fCol-1] = 1;
           }
           if(game.matrix[fRow+1][fCol] === 0)
           {
-            if(!verifCheck())
-              posCpy[fRow+1][fCol] = 1;
-            else if(verifPosibleMove(row,col,fRow+1,fCol,-1))
+            if(verifPosibleMove(row,col,fRow+1,fCol,-1))
               posCpy[fRow+1][fCol] = 1;
           }
           if(fCol >= 2 && game.matrix[fRow+1][fCol-2] > 0)
           {
-            if(!verifCheck())
-              posCpy[fRow+1][fCol-2] = 1;
-            else if(verifPosibleMove(row,col,fRow+1,fCol-2,-1))
+            if(verifPosibleMove(row,col,fRow+1,fCol-2,-1))
               posCpy[fRow+1][fCol-2]  =1
             
           }
           if(fCol <= 7 && game.matrix[fRow+1][fCol+1] > 0)
           {
-            if(!verifCheck())
-            posCpy[fRow+1][fCol+1] = 1;
-            else if(verifPosibleMove(row,col,fRow+1,fCol+1,-1))
+            if(verifPosibleMove(row,col,fRow+1,fCol+1,-1))
             posCpy[fRow+1][fCol+1] = 1;
           }
           if(fRow === 2 &&  game.matrix[fRow+2][fCol-2] === 0 && game.matrix[fRow+1][fCol-1] === 0){
-            if(!verifCheck())
-            posCpy[fRow+2][fCol-2] = 1;
-            else if(verifPosibleMove(row,col,fRow+2,fCol-2,-1))
+            if(verifPosibleMove(row,col,fRow+2,fCol-2,-1))
             posCpy[fRow+2][fCol-2] = 1; 
           }  
           if(fRow === 2 && game.matrix[fRow+2][fCol] === 0 && game.matrix[fRow+1][fCol] === 0){
-            if(!verifCheck())
-            posCpy[fRow+2][fCol] = 1;
-            else if(verifPosibleMove(row,col,fRow+2,fCol,-1))
+            if(verifPosibleMove(row,col,fRow+2,fCol,-1))
             posCpy[fRow+2][fCol] = 1;
          }
          if(fCol < 8 && game.lastMove.piece === 6 && game.lastMove.to[0] === fRow && game.lastMove.to[1] === fCol+1 && game.lastMove.to[0]-game.lastMove.from[0] === -2)
          {
           if(!verifCheck())
-            {posCpy[fRow+1][fCol] = 1;
-              enpasant.canEnpas = true;
-              enpasant.move = [fRow+1,fCol];
-              enpasant.deleted = game.lastMove.to;
-              }
-            else if(verifPosibleMove(row,col,fRow+1,fCol,-1))
+            if(verifPosibleMove(row,col,fRow+1,fCol,-1))
             {posCpy[fRow+1][fCol] = 1;
            
            enpasant.canEnpas = true;
@@ -984,12 +967,7 @@ const hex3Style = [
          }
          if(fCol > 0 && game.lastMove.piece === 6 && game.lastMove.to[0] === fRow && game.lastMove.to[1] === fCol-1 && game.lastMove.to[0]-game.lastMove.from[0] === -2)
          {
-          if(!verifCheck()){
-            posCpy[fRow+1][fCol-1] = 1;
-            enpasant.canEnpas= true;
-            enpasant.move = [fRow+1,fCol-1];
-            enpasant.deleted = game.lastMove.to;}
-            else if(verifPosibleMove(row,col,fRow+1,fCol-1,-1))
+          if(verifPosibleMove(row,col,fRow+1,fCol-1,-1))
             {
 
            posCpy[fRow+1][fCol-1] = 1;
@@ -1004,55 +982,36 @@ const hex3Style = [
       case 6 :
         if(game.matrix[fRow-1][fCol+1] === 0 )
           {
-            if(!verifCheck())
-            posCpy[fRow-1][fCol+1] = 1;
-            else if(verifPosibleMove(row,col,fRow-1,fCol+1,1))
+            if(verifPosibleMove(row,col,fRow-1,fCol+1,1))
             posCpy[fRow-1][fCol+1] = 1;
           }
           if(game.matrix[fRow-1][fCol] === 0)
           {
-            if(!verifCheck())
-            posCpy[fRow-1][fCol] = 1;
-            else if(verifPosibleMove(row,col,fRow-1,fCol,1))
+            if(verifPosibleMove(row,col,fRow-1,fCol,1))
             posCpy[fRow-1][fCol] = 1;
 
           }
           if(fCol >= 2 && game.matrix[fRow-1][fCol-1] < 0)
           {
-            if(!verifCheck())
-            posCpy[fRow-1][fCol-1] = 1;
-            else if(verifPosibleMove(row,col,fRow-1,fCol-1,1))
+            if(verifPosibleMove(row,col,fRow-1,fCol-1,1))
             posCpy[fRow-1][fCol-1] = 1;
           }
           if(fCol <= 7 && game.matrix[fRow-1][fCol+2] < 0)
           {
-            if(!verifCheck())
-            posCpy[fRow-1][fCol+2] = 1;
-            else if(verifPosibleMove(row,col,fRow-1,fCol+2,1))
+            if(verifPosibleMove(row,col,fRow-1,fCol+2,1))
             posCpy[fRow-1][fCol+2] = 1;
           }
           if(fRow === 6 &&  game.matrix[fRow-2][fCol+2] === 0 && game.matrix[fRow-1][fCol+1] === 0){
-            if(!verifCheck())
-            posCpy[fRow-2][fCol+2] = 1;
-            else if(verifPosibleMove(row,col,fRow-2,fCol+2,1))
+            if(verifPosibleMove(row,col,fRow-2,fCol+2,1))
             posCpy[fRow-2][fCol+2] = 1; 
           }  
           if(fRow === 6 && game.matrix[fRow-2][fCol] === 0 && game.matrix[fRow-1][fCol] === 0){
-            if(!verifCheck())
-            posCpy[fRow-2][fCol] = 1;
-            else if(verifPosibleMove(row,col,fRow-2,fCol,1))
+            if(verifPosibleMove(row,col,fRow-2,fCol,1))
             posCpy[fRow-2][fCol] = 1; 
          }  
          if(fCol < 8 && game.lastMove.piece === -6 && game.lastMove.to[0] === fRow && game.lastMove.to[1] === fCol+1 && game.lastMove.to[0]-game.lastMove.from[0] === 2)
          {
-          if(!verifCheck())
-          {
-            posCpy[fRow-1][fCol+1] = 1;
-            enpasant.canEnpas = true;
-            enpasant.move = [fRow-1,fCol+1];
-            enpasant.deleted = game.lastMove.to;
-            }
-            else if(verifPosibleMove(row,col,fRow-1,fCol+1,1))
+          if(verifPosibleMove(row,col,fRow-1,fCol+1,1))
             {
            posCpy[fRow-1][fCol+1] = 1;
            enpasant.canEnpas = true;
@@ -1062,13 +1021,7 @@ const hex3Style = [
          }
          if(fCol > 0 && game.lastMove.piece === -6 && game.lastMove.to[0] === fRow && game.lastMove.to[1] === fCol-1 && game.lastMove.to[0]-game.lastMove.from[0] === 2)
          {
-          if(!verifCheck())
-             {posCpy[fRow-1][fCol] = 1;
-              enpasant.canEnpas= true;
-              enpasant.move = [fRow-1,fCol];
-              enpasant.deleted = game.lastMove.to;
-              }
-            else if(verifPosibleMove(row,col,fRow-1,fCol,1))
+          if(verifPosibleMove(row,col,fRow-1,fCol,1))
            {posCpy[fRow-1][fCol] = 1;
            enpasant.canEnpas= true;
            enpasant.move = [fRow-1,fCol];
@@ -1080,82 +1033,58 @@ const hex3Style = [
         case -5:
           if(fRow+2 <=8 && fCol+1 <=8 && game.matrix[fRow+2][fCol+1] >= 0)
           {
-            if(!verifCheck())
-            posCpy[fRow+2][fCol+1] = 1;
-            else if(verifPosibleMove(row,col,fRow+2,fCol+1,-1))
+            if(verifPosibleMove(row,col,fRow+2,fCol+1,-1))
             posCpy[fRow+2][fCol+1] = 1;
             
           }
           if(fRow+3 <=8 && fCol-1 >=0 && game.matrix[fRow+3][fCol-1] >= 0)
           {
-            if(!verifCheck())
-            posCpy[fRow+3][fCol-1] = 1;
-            else if(verifPosibleMove(row,col,fRow+3,fCol-1,-1))
+            if(verifPosibleMove(row,col,fRow+3,fCol-1,-1))
             posCpy[fRow+3][fCol-1] = 1;
           }
           if(fRow+2 <=8 && fCol-3 >=0 && game.matrix[fRow+2][fCol-3] >= 0)
           {
-            if(!verifCheck())
-            posCpy[fRow+2][fCol-3] = 1;
-            else if(verifPosibleMove(row,col,fRow+2,fCol-3,-1))
+            if(verifPosibleMove(row,col,fRow+2,fCol-3,-1))
             posCpy[fRow+2][fCol-3] = 1;
           }
           if(fRow+3 <=8 && fCol-2 >=0 && game.matrix[fRow+3][fCol-2] >= 0)
           {
-            if(!verifCheck())
-            posCpy[fRow+3][fCol-2] = 1;
-            else if(verifPosibleMove(row,col,fRow+3,fCol-2,-1))
+            if(verifPosibleMove(row,col,fRow+3,fCol-2,-1))
             posCpy[fRow+3][fCol-2] = 1;
           }
           if(fRow+1 <=8 && fCol+2<=8 && game.matrix[fRow+1][fCol+2] >= 0)
           {
-            if(!verifCheck())
-            posCpy[fRow+1][fCol+2] = 1;
-            else if(verifPosibleMove(row,col,fRow+1,fCol+2,-1))
+            if(verifPosibleMove(row,col,fRow+1,fCol+2,-1))
             posCpy[fRow+1][fCol+2] = 1;
           }
           if(fRow-1 >=0 && fCol+3<=8 && game.matrix[fRow-1][fCol+3] >= 0)
           {
-            if(!verifCheck())
-            posCpy[fRow-1][fCol+3] = 1;
-            else if(verifPosibleMove(row,col,fRow-1,fCol+3,-1))
+            if(verifPosibleMove(row,col,fRow-1,fCol+3,-1))
             posCpy[fRow-1][fCol+3] = 1;
           }
           if(fRow+1 <= 8 && fCol-3 >=0 && game.matrix[fRow+1][fCol-3] >=0)
           {
-            if(!verifCheck())
-            posCpy[fRow+1][fCol-3] = 1;
-            else if(verifPosibleMove(row,col,fRow+1,fCol-3,-1))
+            if(verifPosibleMove(row,col,fRow+1,fCol-3,-1))
             posCpy[fRow+1][fCol-3] = 1;
           }
           if(fRow-1 >=0 && fCol-2 >= 0 && game.matrix[fRow-1][fCol-2] >=0){
-            if(!verifCheck())
-            posCpy[fRow-1][fCol-2] = 1;
-            else if(verifPosibleMove(row,col,fRow-1,fCol-2,-1))
+            if(verifPosibleMove(row,col,fRow-1,fCol-2,-1))
             posCpy[fRow-1][fCol-2] = 1;
           }
           if(fRow-2 >= 0 && fCol-1 >= 0 && game.matrix[fRow-2][fCol-1] >= 0){
-            if(!verifCheck())
-            posCpy[fRow-2][fCol-1] = 1;
-            else if(verifPosibleMove(row,col,fRow-2,fCol-1,-1))
+            if(verifPosibleMove(row,col,fRow-2,fCol-1,-1))
             posCpy[fRow-2][fCol-1] = 1;
           }
           if(fRow-3 >= 0 && fCol+1 <= 8 && game.matrix[fRow-3][fCol+1] >= 0 ){
-            if(!verifCheck())
-            posCpy[fRow-3][fCol+1] = 1;
-            else if(verifPosibleMove(row,col,fRow-3,fCol+1,-1))
+            if(verifPosibleMove(row,col,fRow-3,fCol+1,-1))
             posCpy[fRow-3][fCol+1] = 1;
           }
           if(fRow-3>= 0 && fCol+2 <= 8 && game.matrix[fRow-3][fCol+2] >= 0){
-            if(!verifCheck())
-            posCpy[fRow-3][fCol+2] = 1;
-            else if(verifPosibleMove(row,col,fRow-3,fCol+2,-1))
+            if(verifPosibleMove(row,col,fRow-3,fCol+2,-1))
             posCpy[fRow-3][fCol+2] = 1;
           }
           if(fRow-2 >= 0 && fCol+3 <= 8 && game.matrix[fRow-2][fCol+3] >=0){
-            if(!verifCheck())
-            posCpy[fRow-2][fCol+3] = 1;
-            else if(verifPosibleMove(row,col,fRow-2,fCol+3,-1))
+            if(verifPosibleMove(row,col,fRow-2,fCol+3,-1))
             posCpy[fRow-2][fCol+3] = 1;
           }
           
@@ -1163,81 +1092,57 @@ const hex3Style = [
         case 5:
           if(fRow+2 <=8 && fCol+1 <=8 && game.matrix[fRow+2][fCol+1] <= 0)
           {
-            if(!verifCheck())
-            posCpy[fRow+2][fCol+1] = 1;
-            else if(verifPosibleMove(row,col,fRow+2,fCol+1,1))
+            if(verifPosibleMove(row,col,fRow+2,fCol+1,1))
             posCpy[fRow+2][fCol+1] = 1;
           }
           if(fRow+3 <=8 && fCol-1 >=0 && game.matrix[fRow+3][fCol-1] <= 0)
           {
-            if(!verifCheck())
-            posCpy[fRow+3][fCol-1] = 1;
-            else if(verifPosibleMove(row,col,fRow+3,fCol-1,1))
+            if(verifPosibleMove(row,col,fRow+3,fCol-1,1))
             posCpy[fRow+3][fCol-1] = 1;
           }
           if(fRow+2 <=8 && fCol-3 >=0 && game.matrix[fRow+2][fCol-3] <= 0)
           {
-            if(!verifCheck())
-            posCpy[fRow+2][fCol-3] = 1;
-            else if(verifPosibleMove(row,col,fRow+2,fCol-3,1))
+            if(verifPosibleMove(row,col,fRow+2,fCol-3,1))
             posCpy[fRow+2][fCol-3] = 1;
           }
           if(fRow+3 <=8 && fCol-2 >=0 && game.matrix[fRow+3][fCol-2] <= 0)
           {
-            if(!verifCheck())
-            posCpy[fRow+3][fCol-2] = 1;
-            else if(verifPosibleMove(row,col,fRow+3,fCol-2,1))
+            if(verifPosibleMove(row,col,fRow+3,fCol-2,1))
             posCpy[fRow+3][fCol-2] = 1;
           }
           if(fRow+1 <=8 && fCol+2<=8 && game.matrix[fRow+1][fCol+2] <= 0)
           {
-            if(!verifCheck())
-            posCpy[fRow+1][fCol+2] = 1;
-            else if(verifPosibleMove(row,col,fRow+3,fCol-2,1))
+            if(verifPosibleMove(row,col,fRow+3,fCol-2,1))
             posCpy[fRow+1][fCol+2] = 1;
           }
           if(fRow-1 >=0 && fCol+3<=8 && game.matrix[fRow-1][fCol+3] <= 0)
           {
-            if(!verifCheck())
-            posCpy[fRow-1][fCol+3] = 1;
-            else if(verifPosibleMove(row,col,fRow-1,fCol+3,1))
+            if(verifPosibleMove(row,col,fRow-1,fCol+3,1))
             posCpy[fRow-1][fCol+3] = 1;
           }
           if(fRow+1 <= 8 && fCol-3 >=0 && game.matrix[fRow+1][fCol-3] <=0)
           {
-            if(!verifCheck())
-            posCpy[fRow+1][fCol-3] = 1;
-            else if(verifPosibleMove(row,col,fRow+1,fCol-3,1))
+            if(verifPosibleMove(row,col,fRow+1,fCol-3,1))
             posCpy[fRow+1][fCol-3] = 1;
           }
           if(fRow-1 >=0 && fCol-2 >= 0 && game.matrix[fRow-1][fCol-2] <=0){
-            if(!verifCheck())
-            posCpy[fRow-1][fCol-2] = 1;
-            else if(verifPosibleMove(row,col,fRow-1,fCol-2,1))
+            if(verifPosibleMove(row,col,fRow-1,fCol-2,1))
             posCpy[fRow-1][fCol-2] = 1;
           }
           if(fRow-2 >= 0 && fCol-1 >= 0 && game.matrix[fRow-2][fCol-1] <= 0){
-            if(!verifCheck())
-            posCpy[fRow-2][fCol-1] = 1;
-            else if(verifPosibleMove(row,col,fRow-2,fCol-1,-1))
+            if(verifPosibleMove(row,col,fRow-2,fCol-1,-1))
             posCpy[fRow-2][fCol-1] = 1;
           }
           if(fRow-3 >= 0 && fCol+1 <= 8 && game.matrix[fRow-3][fCol+1] <= 0 ){
-            if(!verifCheck())
-            posCpy[fRow-3][fCol+1] = 1;
-            else if(verifPosibleMove(row,col,fRow-3,fCol+1,1))
+            if(verifPosibleMove(row,col,fRow-3,fCol+1,1))
             posCpy[fRow-3][fCol+1] = 1;
           }
           if(fRow-3>= 0 && fCol+2 <= 8 && game.matrix[fRow-3][fCol+2] <= 0){
-            if(!verifCheck())
-            posCpy[fRow-3][fCol+2] = 1;
-            else if(verifPosibleMove(row,col,fRow-3,fCol+2,1))
+            if(verifPosibleMove(row,col,fRow-3,fCol+2,1))
             posCpy[fRow-3][fCol+2] = 1;
           }
           if(fRow-2 >= 0 && fCol+3 <= 8 && game.matrix[fRow-2][fCol+3] <=0){
-            if(!verifCheck())
-            posCpy[fRow-2][fCol+3] = 1;
-            else if(verifPosibleMove(row,col,fRow-2,fCol+3,1))
+            if(verifPosibleMove(row,col,fRow-2,fCol+3,1))
             posCpy[fRow-2][fCol+3] = 1;
           }
           break;
@@ -1674,10 +1579,10 @@ const hex3Style = [
 
   return (
     <main
-      className={`bg-sky-300  absolute overflow-hidden h-screen w-screen  ${inter.className}`}
+      className={`bg-sky-300  absolute overflow-hidden min-h-screen w-screen  ${inter.className}`}
     >
       
-      <div className=' relative left-[5vw] sm:left-[calc(65vw-300px)] top-[calc(50vh-300px)] md:scale-150 md:left-[calc(75vw-300px)] md:top-[calc(50vh-300px)]'>
+      <div className=' relative left-[-15vw] xxsm:left-[-50px] xsm:left-[-30px] scale-50 xxsm:scale-[0.6]  xsm:scale-75  sm:scale-100 sm:left-[calc(65vw-300px)] top-[calc(50vh-300px)] md:scale-150 md:left-[calc(75vw-300px)] md:top-[calc(50vh-300px)]'>
       <h1 className='relative top-[-45px] border-white border-2 rounded-lg bg-slate-700 flex flex-wrap w-[100px] text-white justify-center'>{secToMin(seconds2)}</h1>
       {
         matrix.map( (row,key)=>{
@@ -1717,6 +1622,9 @@ const hex3Style = [
     <h1 className='text-black text-3xl relative flex top-[260px] z-0 '>{verifCheck()?`${game.whosTurn?'WHITE':'BLACK'} is in CHECK`:'No one in Check'}!</h1>
      {winner !== 0 ? <h1 className='text-2xl top-[260px] relative'>{winner === 1? 'White ': 'Black ' } won</h1> : <h1 className='text-2xl top-[260px] relative'>The game is in progress</h1>}
       <button className='text-xl top-[270px] relative bg-white rounded-lg py-2 px-5 hover:bg-slate-200 transition-all duration-200' onClick={resetGame}>{winner ===0 ?'Reset Game':'New Game'}</button>
+      <a className='text-black text-xl relative flex top-[280px] z-0 underline hover:text-slate-50 transition-all duration-200' href='https://greenchess.net/rules.php?v=de-vasa' target='_blank' rel="noopener noreferrer">Access De Vasa's chess rules</a>
+      <a className='text-black text-xl relative flex top-[280px] z-0 underline hover:text-slate-50 transition-all duration-200' href='https://github.com/robertDinca2003/hexagonal-chess' target='_blank' rel="noopener noreferrer">Access project's GitHub</a>
+      
       </div>
       </main>
   )
